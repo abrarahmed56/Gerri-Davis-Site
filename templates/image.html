@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>{{painting}}</title>
+    <style>
+      html, body {
+        width: 100%;
+        height: 100%;
+      }
+    </style>
+    <script>
+      var resize = function() {
+      var bigImg = document.getElementById("bigImg");
+      bigImg.setAttribute("style", "height: 0px; width: 0%;");
+      var wind = document.getElementById("pg");
+      var windowProportion = wind.clientHeight * .85 / wind.clientWidth;
+      var imgProportion = bigImg.naturalHeight / bigImg.naturalWidth;
+      if ( windowProportion > imgProportion ) {
+        var h = imgProportion * w * .9;
+        var hTwo = (wind.clientHeight - h) * .9;
+        if ( hTwo > 60 ) {
+          hTwo = 60;
+      }
+      smallImg = document.getElementById("smallImg");
+      smallProp = smallPic.naturalWidth / smallPic.naturalHeight;
+      alert("hi");
+      wTwo = smallProp * hTwo;
+      if ( wTwo > wind.clientWidth ) {
+        smallImg.setAttribute("style", "width: 100%;");
+      }
+      else {
+        smallImg.setAttribute("style", "height: " + hTwo + "px;");
+      }
+      alert("hi");
+      bigImg.setAttribute("style", "height: " + h + "px;");
+      }
+      else {
+        var h = wind.clientHeight;
+        bigImg.setAttribute("style", "height: " + h * .85 + "px;");
+        smallImg.setAttribute("style", "height: " + h * .10 + "px");
+      }
+      console.log(document.getElementById("bigImg"));
+      //bigImg.setAttribute("style", "width: " + w + "px; height: " + h + "px;");
+      }
+    </script>
+  </head>
+  <body onload="resize();" onresize="resize();">
+    <div id="pg" style="height:100%; width:100%; text-align:center;">
+      <img id="bigImg" src="../static/files/Images/ImagesOfPaintings/{{painting}}.jpg">
+      <br>
+      <img id="smallImg" src="../static/files/TextUnderImages/{{painting}}.jpg">
+    </div>
+  <body>
+</html>

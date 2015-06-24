@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <!-- styles needed by jScrollPane-->
+    <link type="text/css" href="static/style/jquery.jscrollpane.css" rel="stylesheet" media="all" />
+
+    <!-- latest jQuery direct from google's CDN -->
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js">
+    </script>
+
+    <!-- the mousewheel plugin - optional to provide mousewheel support 
+	 <script type="text/javascript" src="script/jquery.mousewheel.js"></script>-->
+
+    <!-- the jScrollPane script -->
+    <script type="text/javascript" src="static/script/jquery.jscrollpane.min.js"></script>
+
+    <style>
+      .jspVerticalBar
+      {
+      left: 0;
+      }
+
+      .scroll-pane
+      {
+      width: 100%;
+      height: 100%;
+      overflow: auto;
+      }
+
+      html, body {
+      height: 100%;
+      width: 100%;
+      margin: 0;
+      padding: 0;
+      }
+      .title {
+      height: 50px;
+      }
+      .detail {
+      height: 28px;
+      margin-left: 30px;
+      }
+      table {
+      border: 1px solid black;
+      width: 100%;
+      height: 100%;
+      }
+      #sty {
+      width: 100%;
+      height: 100%;
+      overflow-y: auto;
+      overflow-x: hidden;
+      }
+      #styTwo {
+      width: 100%;
+      height: 100%;
+      }
+    </style>
+    <!--<script src="//code.jquery.com/jquery-1.11.2.min.js"></script>
+	<script src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>-->
+
+    <script src="static/script/davis.js"></script>
+
+  </head>
+
+<!--  <body id="all" onload="init({{yearA}}, {{yearB}}, {{yearC}}, {{yearOther}}, {{randLoadImgs}}, {{menuLeft}}, {{menuMid}}, {{menuRight}}); $('#sty').hide(); checkUser(); resize(); $('#sty').show(); resize(); slideshow();" onresize="$('#sty').hide(); resize(); $('#sty').show(); resize();">-->
+  <body id="all" onload="init({{yearA}}, {{yearB}}, {{yearC}}, {{yearOther}}, {{randLoadImgs}}, {{menuLeft}}, {{menuMid}}, {{menuRight}});">
+    
+    <title>Gerri Davis</title>
+
+    <div id="webpage">
+    
+    <table>
+      <tr>
+	
+	<td style="width: 35%">
+	  <div id="sty">
+	    <div class="scroll-pane">
+	      <img id="GerriDavis" style="height:90px;" src="static/files/TitlesOnLeft/Gerri Davis.jpg" onmouseover="bold(this.id, this.src); showMenu({{menuLeft}}, {{menuMid}}, {{menuRight}});" onmouseout="unbold(this.id, this.src);">
+	      <br>
+
+	      {% for painting in paintingsList %}
+	      <img id="{{painting|replace(' ','')}}" class="title" src="static/files/TitlesOnLeft/{{painting}}.jpg" onclick="myToggle(this.id);" onmouseover="bold(this.id, this.src); changeImg(this.src);" onmouseout="unbold(this.id, this.src);">
+	      <br>
+	      <div id="{{painting|replace(' ', '')}}Details" class="detailslist">
+		{% for detail in paintingsDict[painting] %}
+		<img id="{{(painting+'-'+detail)|replace(' ','')}}" class="detail" src="static/files/TitlesOnLeft/{{detail}}.jpg" onmouseover="bold(this.id, this.src); changeImg(this.src.replace('TitlesOnLeft/BoldText/', 'TitlesOnLeft/BoldText/{{painting}} '));" onmouseout="unbold(this.id, this.src);">
+		<br>
+		{% endfor %}
+	      </div>
+	      {% endfor %}
+	    </div>
+	  </div>
+	</td>
+
+	<td style="width: 65%">
+	  <!---->
+
+	  <!---->
+	  <div style="text-align:center; background-color:white; border:3px solid white;" id="styTwo">
+	    <a id="imgLink" href="/image/the Dance"><img id="bigImg" src="static/files/Images/ImagesOfPaintings/the Dance.jpg" style="width:0%; height:0%"></a>
+	    <br>
+	    <img id="smallImg" src="static/files/TextUnderImages/the Dance.jpg" style="height:0px">
+	  </div>
+	</td>
+
+      </tr>
+    </table>
+    </div>
+
+    <div id="mobilepage">
+      Hello this is the current mobile site
+    </div>
+
+  </body>
+</html>
