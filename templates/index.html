@@ -56,6 +56,10 @@
       width: 100%;
       height: 100%;
       }
+      #webpage {
+      width: 100%;
+      height: 100%;
+      }
     </style>
     <!--<script src="//code.jquery.com/jquery-1.11.2.min.js"></script>
 	<script src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>-->
@@ -77,15 +81,15 @@
 	<td style="width: 35%">
 	  <div id="sty">
 	    <div class="scroll-pane">
-	      <img id="GerriDavis" style="height:90px;" src="static/files/TitlesOnLeft/Gerri Davis.jpg" onmouseover="bold(this.id, this.src); showMenu({{menuLeft}}, {{menuMid}}, {{menuRight}});" onmouseout="unbold(this.id, this.src);">
+	      <img id="GerriDavis" style="height:90px;" src="static/files/Text/Gerri Davis.jpg" onmouseover="bold(this.id, this.src); showMenu({{menuLeft}}, {{menuMid}}, {{menuRight}});" onmouseout="unbold(this.id, this.src);">
 	      <br>
 
 	      {% for painting in paintingsList %}
-	      <img id="{{painting|replace(' ','')}}" class="title" src="static/files/TitlesOnLeft/{{painting}}.jpg" onclick="myToggle(this.id);" onmouseover="bold(this.id, this.src); changeImg(this.src);" onmouseout="unbold(this.id, this.src);">
+	      <img id="{{painting|replace(' ','')}}" class="title" src="static/files/Text/{{painting}}.jpg" onclick="myToggle(this.id);" onmouseover="bold(this.id, this.src); changeImg(this.src);" onmouseout="unbold(this.id, this.src);">
 	      <br>
 	      <div id="{{painting|replace(' ', '')}}Details" class="detailslist">
 		{% for detail in paintingsDict[painting] %}
-		<img id="{{(painting+'-'+detail)|replace(' ','')}}" class="detail" src="static/files/TitlesOnLeft/{{detail}}.jpg" onmouseover="bold(this.id, this.src); changeImg(this.src.replace('TitlesOnLeft/BoldText/', 'TitlesOnLeft/BoldText/{{painting}} '));" onmouseout="unbold(this.id, this.src);">
+		<img id="{{(painting+'-'+detail)|replace(' ','')}}" class="detail" src="static/files/Text/{{detail}}.jpg" onmouseover="bold(this.id, this.src); changeImg(this.src.replace('Text/BoldText/', 'Text/BoldText/{{painting}} '));" onmouseout="unbold(this.id, this.src);">
 		<br>
 		{% endfor %}
 	      </div>

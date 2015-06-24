@@ -49,6 +49,7 @@ var endSlideshow = function(e) {
     }
 };
 var resize = function() {
+    console.log("resize");
     var wind = document.getElementById("styTwo");
     if (document.getElementById("imgLink").innerHTML.includes("div")) {
 	//setTimeout is here because when resizing from fullscreen, sometimes width is slow to load
@@ -115,11 +116,11 @@ var checkUser = function() {
 }
 
 var bold = function(id, src) {
-	document.getElementById(id).setAttribute("src", src.replace("TitlesOnLeft", "TitlesOnLeft/BoldText"))
+	document.getElementById(id).setAttribute("src", src.replace("Text", "Text/BoldText"))
 }
 
 var unbold = function(id, src) {
-    document.getElementById(id).setAttribute("src", src.replace("TitlesOnLeft/BoldText", "TitlesOnLeft"))
+    document.getElementById(id).setAttribute("src", src.replace("Text/BoldText", "Text"))
 }
 
 var myToggle = function(id) {
@@ -136,17 +137,17 @@ var myToggle = function(id) {
 var showMenu = function(menuLeft, menuMid, menuRight) {
     var newW = document.getElementById("styTwo").width * .9;
     var s = "<div id='container' style='width:" + newW + "px; text-align:center; background-color:red; font-size:0;'>";
-    var left = "<div id='menuLeft' style='width:42%; float:left;'><img id='" + menuLeft[0].replace(/ /g, '') + "' style='width:100%;' src='static/files/TitlesOnLeft/" + menuLeft[0] + ".jpg'>";
-    var mid = "<div id='menuMid' style='width:24%; float:left;'><img id='" + menuMid[0].replace(/ /g, '') + "' style='width:100%;' src='static/files/TitlesOnLeft/" + menuMid[0] + ".jpg'>";
-    var right = "<div id='menuRight' style='width:34%; float:left;'><img id='" + menuRight[0].replace(/ /g, '') + "' style='width:100%;' src='static/files/TitlesOnLeft/" + menuRight[0] + ".jpg'>";
+    var left = "<div id='menuLeft' style='width:42%; float:left;'><img id='" + menuLeft[0].replace(/ /g, '') + "' style='width:100%;' src='static/files/Text/" + menuLeft[0] + ".jpg'>";
+    var mid = "<div id='menuMid' style='width:24%; float:left;'><img id='" + menuMid[0].replace(/ /g, '') + "' style='width:100%;' src='static/files/Text/" + menuMid[0] + ".jpg'>";
+    var right = "<div id='menuRight' style='width:34%; float:left;'><img id='" + menuRight[0].replace(/ /g, '') + "' style='width:100%;' src='static/files/Text/" + menuRight[0] + ".jpg'>";
     for ( var i = 1 ; i < menuRight.length ; i++ ) {
 	if ( i < menuLeft.length ) {
-	    left = left + "<img id='" + menuLeft[i].replace(/ /g, '') + "' style='width:100%;' src='static/files/TitlesOnLeft/" + menuLeft[i] + ".jpg' onmouseover='bold(this.id, this.src);' onmouseout='unbold(this.id, this.src);' onclick='clickMenu(&#34;" + menuLeft[i] + "&#34;);'>"
+	    left = left + "<img id='" + menuLeft[i].replace(/ /g, '') + "' style='width:100%;' src='static/files/Text/" + menuLeft[i] + ".jpg' onmouseover='bold(this.id, this.src);' onmouseout='unbold(this.id, this.src);' onclick='clickMenu(&#34;" + menuLeft[i] + "&#34;);'>"
 	}
 	if ( i < menuMid.length ) {
-	    mid = mid + "<img id='" + menuMid[i].replace(' ', '') + "' style='width:100%;' src='static/files/TitlesOnLeft/" + menuMid[i] + ".jpg' onmouseover='bold(this.id, this.src);' onmouseout='unbold(this.id, this.src);' onclick='clickMenu(&#34;" + menuMid[i] + "&#34;);'>"
+	    mid = mid + "<img id='" + menuMid[i].replace(' ', '') + "' style='width:100%;' src='static/files/Text/" + menuMid[i] + ".jpg' onmouseover='bold(this.id, this.src);' onmouseout='unbold(this.id, this.src);' onclick='clickMenu(&#34;" + menuMid[i] + "&#34;);'>"
 	}
-	right = right + "<img id='" + menuRight[i].replace(' ', '') + "'  style='width:100%;' src='static/files/TitlesOnLeft/" + menuRight[i] + ".jpg' onmouseover='bold(this.id, this.src);' onmouseout='unbold(this.id, this.src);' onclick='clickMenu(&#34;" + menuRight[i] + "&#34;);'>"
+	right = right + "<img id='" + menuRight[i].replace(' ', '') + "'  style='width:100%;' src='static/files/Text/" + menuRight[i] + ".jpg' onmouseover='bold(this.id, this.src);' onmouseout='unbold(this.id, this.src);' onclick='clickMenu(&#34;" + menuRight[i] + "&#34;);'>"
     }
     left = left + "</div>";
     mid = mid + "</div>";
@@ -209,7 +210,7 @@ var yearFunction = function(year) {
 	    var comma = yearA[i].indexOf(",");
 	    var name = yearA[i].substring(0, comma);
 	    var link = yearA[i].substring(comma+1);
-	    s = s + "<a href='" + link + "'><img id='" + name.replace(/ /g, '') + "' style='width:100%;' src='static/files/TitlesOnLeft/" + name + ".jpg' onmouseover='bold(this.id, this.src);' onmouseout='unbold(this.id, this.src);'></a>"
+	    s = s + "<a href='" + link + "'><img id='" + name.replace(/ /g, '') + "' style='width:100%;' src='static/files/Text/" + name + ".jpg' onmouseover='bold(this.id, this.src);' onmouseout='unbold(this.id, this.src);'></a>"
 	}
     }
     else if (year == 'b') {
@@ -217,7 +218,7 @@ var yearFunction = function(year) {
 	    var comma = yearB[i].indexOf(",");
 	    var name = yearB[i].substring(0, comma);
 	    var link = yearB[i].substring(comma+1);
-	    s = s + "<a href='" + link + "'><img id='" + name.replace(/ /g, '') + "' style='width:100%;' src='static/files/TitlesOnLeft/" + name + ".jpg' onmouseover='bold(this.id, this.src);' onmouseout='unbold(this.id, this.src);'></a>"
+	    s = s + "<a href='" + link + "'><img id='" + name.replace(/ /g, '') + "' style='width:100%;' src='static/files/Text/" + name + ".jpg' onmouseover='bold(this.id, this.src);' onmouseout='unbold(this.id, this.src);'></a>"
 	}
     }
     else if (year == 'c') {
@@ -225,7 +226,7 @@ var yearFunction = function(year) {
 	    var comma = yearC[i].indexOf(",");
 	    var name = yearC[i].substring(0, comma);
 	    var link = yearC[i].substring(comma+1);
-	    s = s + "<a href='" + link + "'><img id='" + name.replace(/ /g, '') + "' style='width:100%;' src='static/files/TitlesOnLeft/" + name + ".jpg' onmouseover='bold(this.id, this.src);' onmouseout='unbold(this.id, this.src);'></a>"
+	    s = s + "<a href='" + link + "'><img id='" + name.replace(/ /g, '') + "' style='width:100%;' src='static/files/Text/" + name + ".jpg' onmouseover='bold(this.id, this.src);' onmouseout='unbold(this.id, this.src);'></a>"
 	}
     }
     else if (year == 'other') {
@@ -233,14 +234,14 @@ var yearFunction = function(year) {
 	    var comma = yearOther[i].indexOf(",");
 	    var name = yearOther[i].substring(0, comma);
 	    var link = yearOther[i].substring(comma+1);
-	    s = s + "<a href='" + link + "'><img id='" + name.replace(/ /g, '') + "' style='width:100%;' src='static/files/TitlesOnLeft/" + name + ".jpg' onmouseover='bold(this.id, this.src);' onmouseout='unbold(this.id, this.src);'></a>"
+	    s = s + "<a href='" + link + "'><img id='" + name.replace(/ /g, '') + "' style='width:100%;' src='static/files/Text/" + name + ".jpg' onmouseover='bold(this.id, this.src);' onmouseout='unbold(this.id, this.src);'></a>"
 	}
     }
     console.log(s);
     console.log("yearfunction");
     $('#container').hide();
     console.log(document.getElementById("imgLink").innerHTML);
-    document.getElementById("imgLink").innerHTML = document.getElementById("imgLink").innerHTML + s + "<img id='Backbutton' src='static/files/TitlesOnLeft/Back button.jpg' onmouseover='bold(this.id, this.src);' onmouseout='unbold(this.id, this.src);' onclick='$(&#34;#container&#34;).show(); console.log(&#34;back clicked&#34;);' width='20%'></div>";
+    document.getElementById("imgLink").innerHTML = document.getElementById("imgLink").innerHTML + s + "<img id='Backbutton' src='static/files/Text/Back button.jpg' onmouseover='bold(this.id, this.src);' onmouseout='unbold(this.id, this.src);' onclick='$(&#34;#container&#34;).show(); console.log(&#34;back clicked&#34;);' width='20%'></div>";
     for (var i = 0 ; i < 10 ; i++ ) {
 	console.log('break');
     }
@@ -249,7 +250,7 @@ var yearFunction = function(year) {
 
 var changeImg = function(src) {
     //better to reload image every time or only if necessary?
-    if (src.replace("TitlesOnLeft/BoldText", "Images/ImagesOfPaintings")!=document.getElementById("bigImg").src) {
+    if (src.replace("Text/BoldText", "Images/ImagesOfPaintings")!=document.getElementById("bigImg").src) {
 	var href = src.substring(0, src.indexOf(".jpg"));
 	href = href.substring(href.lastIndexOf("/")+1);
 	document.getElementById("imgLink").setAttribute("href", "/image/"+href);
@@ -260,8 +261,8 @@ var changeImg = function(src) {
 	    imgLink = imgLink.substring(imgLinkTwo.lastIndexOf("<img"));
 	    document.getElementById("imgLink").innerHTML = imgLink;
 	}
-	document.getElementById("smallImg").setAttribute("src", src.replace("TitlesOnLeft/BoldText", "TextUnderImages"));
-	$("#bigImg").attr("src", src.replace("TitlesOnLeft/BoldText", "Images/ImagesOfPaintings")).load(function() {
+	document.getElementById("smallImg").setAttribute("src", src.replace("Text/BoldText", "TextUnderImages"));
+	$("#bigImg").attr("src", src.replace("Text/BoldText", "Images/ImagesOfPaintings")).load(function() {
 	    resize();
 	});
     }
