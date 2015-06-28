@@ -153,7 +153,11 @@ var showMenu = function(menuLeft, menuMid, menuRight) {
     right = right + "</div>";
     s = s + left + mid + right + "</div>";
     //document.getElementById("imgLink").innerHTML=s + "<div style='background-color:blue; width: 0%; height: 0%;'>words<img id='bigImg'></div>";
-    document.getElementById("imgLink").innerHTML = s + "<img id='bigImg'>"
+    document.getElementById("imgLink").innerHTML = s + "<div id='yearContainer'>" + yearFunction() + "</div><img id='bigImg'>"
+    $("#yearA").hide();
+    $("#yearB").hide();
+    $("#yearC").hide();
+    $("#yearOther").hide();
     document.getElementById("imgLink").removeAttribute("href");
     //document.getElementById("smallImg").setAttribute("style", "width: 0%; height: 0%");
     console.log(document.getElementById("styTwo").clientHeight);
@@ -208,66 +212,56 @@ var clickMenu = function(menuItem) {
 	document.getElementById("imgLink").setAttribute("href", "http://www.gerridavis.net/new/files/Press/Problems%20with%20Authority%20-%20Lawrence%20Weschler_Gerri%20Davis.pdf");
     }
     else if (menuItem == "year a") {
-	yearFunction('a');
+	$("#yearA").show();
+	$("#container").hide();
     }
-    if (menuItem == "year b") {
-	yearFunction('b');
+    else if (menuItem == "year b") {
+	$("#yearB").show();
+	$("#container").hide();
     }
-    if (menuItem == "year c") {
-	yearFunction('c');
+    else if (menuItem == "year c") {
+	$("#yearC").show();
+	$("#container").hide();
     }
-    if (menuItem == "year other") {
-	yearFunction('other');
+    else if (menuItem == "year other") {
+	$("#yearOther").show();
+	$("#container").hide();
     }
-    else {
-	//alert(menuItem);
-    }
-    console.log(menuItem);
 };
 
-var yearFunction = function(year) {
-    var s = "<div id='yearContainer' style='width:88%; text-align:center; background-color:gray;'>";
-    if (year == 'a') {
+var yearFunction = function() {
+    var s = "<div id='yearA'>";
 	for (var i = 0; i < yearA.length; i++ ) {
 	    var comma = yearA[i].indexOf(",");
 	    var name = yearA[i].substring(0, comma);
 	    var link = yearA[i].substring(comma+1);
 	    s = s + "<a href='" + link + "'><img id='" + name.replace(/ /g, '') + "' style='width:100%;' src='static/files/Text/" + name + ".jpg' onmouseover='bold(this.id, this.src);' onmouseout='unbold(this.id, this.src);'></a>"
 	}
+    s = s + "<img id='BackbuttonA' src='static/files/Text/Back button.jpg' onmouseover='bold(this.id, this.src);' onmouseout='unbold(this.id, this.src);' onclick='$(&#34;#container&#34;).show(); $(&quot;#yearA&quot;).hide(); console.log(&#34;back clicked&#34;);' width='20%'></div><div id='yearB'>";
+    for (var i = 0; i < yearB.length; i++ ) {
+	var comma = yearB[i].indexOf(",");
+	var name = yearB[i].substring(0, comma);
+	var link = yearB[i].substring(comma+1);
+	s = s + "<a href='" + link + "'><img id='" + name.replace(/ /g, '') + "' style='width:100%;' src='static/files/Text/" + name + ".jpg' onmouseover='bold(this.id, this.src);' onmouseout='unbold(this.id, this.src);'></a>"
     }
-    else if (year == 'b') {
-	for (var i = 0; i < yearB.length; i++ ) {
-	    var comma = yearB[i].indexOf(",");
-	    var name = yearB[i].substring(0, comma);
-	    var link = yearB[i].substring(comma+1);
-	    s = s + "<a href='" + link + "'><img id='" + name.replace(/ /g, '') + "' style='width:100%;' src='static/files/Text/" + name + ".jpg' onmouseover='bold(this.id, this.src);' onmouseout='unbold(this.id, this.src);'></a>"
-	}
+    s = s + "<img id='BackbuttonB' src='static/files/Text/Back button.jpg' onmouseover='bold(this.id, this.src);' onmouseout='unbold(this.id, this.src);' onclick='$(&#34;#container&#34;).show(); $(&quot;#yearB&quot;).hide(); console.log(&#34;back clicked&#34;);' width='20%'></div><div id='yearC'>";
+    for (var i = 0; i < yearC.length; i++ ) {
+	var comma = yearC[i].indexOf(",");
+	var name = yearC[i].substring(0, comma);
+	var link = yearC[i].substring(comma+1);
+	s = s + "<a href='" + link + "'><img id='" + name.replace(/ /g, '') + "' style='width:100%;' src='static/files/Text/" + name + ".jpg' onmouseover='bold(this.id, this.src);' onmouseout='unbold(this.id, this.src);'></a>"
     }
-    else if (year == 'c') {
-	for (var i = 0; i < yearC.length; i++ ) {
-	    var comma = yearC[i].indexOf(",");
-	    var name = yearC[i].substring(0, comma);
-	    var link = yearC[i].substring(comma+1);
-	    s = s + "<a href='" + link + "'><img id='" + name.replace(/ /g, '') + "' style='width:100%;' src='static/files/Text/" + name + ".jpg' onmouseover='bold(this.id, this.src);' onmouseout='unbold(this.id, this.src);'></a>"
-	}
+    s = s + "<img id='BackbuttonC' src='static/files/Text/Back button.jpg' onmouseover='bold(this.id, this.src);' onmouseout='unbold(this.id, this.src);' onclick='$(&#34;#container&#34;).show(); $(&quot;#yearC&quot;).hide(); console.log(&#34;back clicked&#34;);' width='20%'></div><div id='yearOther'>";
+    for (var i = 0; i < yearOther.length; i++ ) {
+	var comma = yearOther[i].indexOf(",");
+	var name = yearOther[i].substring(0, comma);
+	var link = yearOther[i].substring(comma+1);
+	s = s + "<a href='" + link + "'><img id='" + name.replace(/ /g, '') + "' style='width:100%;' src='static/files/Text/" + name + ".jpg' onmouseover='bold(this.id, this.src);' onmouseout='unbold(this.id, this.src);'></a>"
     }
-    else if (year == 'other') {
-	for (var i = 0; i < yearOther.length; i++ ) {
-	    var comma = yearOther[i].indexOf(",");
-	    var name = yearOther[i].substring(0, comma);
-	    var link = yearOther[i].substring(comma+1);
-	    s = s + "<a href='" + link + "'><img id='" + name.replace(/ /g, '') + "' style='width:100%;' src='static/files/Text/" + name + ".jpg' onmouseover='bold(this.id, this.src);' onmouseout='unbold(this.id, this.src);'></a>"
-	}
-    }
-    //console.log(s);
-    console.log("yearfunction");
+    s = s + "<img id='BackbuttonO' src='static/files/Text/Back button.jpg' onmouseover='bold(this.id, this.src);' onmouseout='unbold(this.id, this.src);' onclick='$(&#34;#container&#34;).show(); $(&quot;#yearContainer&quot;).hide(); console.log(&#34;back clicked&#34;);' width='20%'></div>";
     $("#container").hide();
-    $("#bigImg").hide();
-    $("#smallImg").hide();
     console.log(document.getElementById("imgLink").innerHTML);
-    //document.getElementById("imgLink").innerHTML = document.getElementById("imgLink").innerHTML + s + "<img id='Backbutton' src='static/files/Text/Back button.jpg' onmouseover='bold(this.id, this.src);' onmouseout='unbold(this.id, this.src);' onclick='$(&#34;#container&#34;).show(); console.log(&#34;back clicked&#34;);' width='20%'></div>";
-    document.getElementById("imgLink").innerHTML = s + "<img id='Backbutton' src='static/files/Text/Back button.jpg' onmouseover='bold(this.id, this.src);' onmouseout='unbold(this.id, this.src);' onclick='$(&#34;#container&#34;).show(); console.log(&#34;back clicked&#34;);' width='20%'></div>";
-    //console.log(document.getElementById("imgLink").innerHTML);
+    return s;
 };
 
 var changeImg = function(src) {
