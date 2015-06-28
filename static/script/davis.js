@@ -1,6 +1,14 @@
 $(function()
   {
       $('.scroll-pane').jScrollPane({hideFocus:true});
+      $('.scroll-pane').bind('jsp-arrow-change', function(event, isAtTop, isAtBottom) {
+	  if (isAtBottom) {
+	      $(".indicateMore").hide();
+	  }
+	  else {
+	      $(".indicateMore").show();
+	  }
+      });
   }
  );
 var yearA;
@@ -35,6 +43,9 @@ var init = function(videosDict, yearA, yearB, yearC, yearOther, randLoadImgs) {
     $(".title").on("mouseover", endSlideshow);
     document.getElementById("GerriDavis").addEventListener("mouseover", endSlideshow);
     addVideos(videosDict);
+    var scrollWidth = $(".jspVerticalBar").width() + 5;
+    document.getElementById("whitespace").setAttribute("style", "height:45px; width:33%; position:fixed; bottom:0px; left:" + scrollWidth + "px; z-index:1")
+    document.getElementById("downArrow").setAttribute("style", "height:40px; position:fixed; bottom:5px; left:" + scrollWidth + "px; z-index:3")
 };
 
 var addVideos = function(videosDict) {
