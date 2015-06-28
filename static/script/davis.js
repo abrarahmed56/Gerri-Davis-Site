@@ -11,6 +11,7 @@ $(function()
       });
   }
  );
+var paintingsList;
 var yearA;
 var yearB;
 var yearC;
@@ -22,7 +23,8 @@ var menuRight;
 var slideshowOn;
 var slideshowNum;
 var slideshowTimer;
-var init = function(videosDict, yearA, yearB, yearC, yearOther, randLoadImgs) {
+var init = function(paintingsList, videosDict, yearA, yearB, yearC, yearOther, randLoadImgs) {
+    this.paintingsList = paintingsList;
     this.yearA = yearA;
     this.yearB = yearB;
     this.yearC = yearC;
@@ -31,11 +33,11 @@ var init = function(videosDict, yearA, yearB, yearC, yearOther, randLoadImgs) {
     this.menuLeft = menuLeft;
     this.menuMid = menuMid;
     this.menuRight = menuRight;
-    checkUser();
-    resize();
     slideshowOn = true;
     slideshowNum = 0;
     slideshow(0);
+    checkUser();
+    resize();
     var resizeAfterResized;
     window.onresize = function() {
 	resize();
@@ -133,6 +135,7 @@ var checkUser = function() {
     $(".detailslist").hide();
     if (navigator.userAgent.match(/iPad|iPhone|Android|Blackberry|Windows Phone|webOS/i)!=null ) {
 	$("#webpage").hide();
+	slideshowOn = false;
     }
     else {
 	$("#mobilepage").hide()
@@ -325,4 +328,24 @@ var slideshow = function(num) {
 	    setTimeout("slideshow(" + (num+1) + ")", 3000);
 	}
     }
+};
+var findPainting = function(l, src, inc) {
+    for (var i=0; i<l.length; i++ ) {
+	if (l[i]+".jpg"===src.substring(src.lastIndexOf("/")+1, src.length).replace(/%20/g, " ")) {
+	    var j = i+inc;
+	    if (j>paintingsList.length-1) {
+		return 0;
+	    }
+	    else if (j<0) {
+		return paintingsList.length-1;
+	    }
+	    else return j;
+	}
+    }
+    console.log(src);
+};
+var mobileChangeImg = function(inc) {
+    var newPainting = paintingsList[findPainting(paintingsList, document.getElementById("mobileBigImg").src, inc)] + ".jpg"
+    document.getElementById("mobileBigImg").setAttribute("src", "static/files/Images/ImagesOfPaintings/" + newPainting);
+    document.getElementById("mobileSmallImg").setAttribute("src", "static/files/TextUnderImages/" + newPainting);
 };

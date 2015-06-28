@@ -69,7 +69,7 @@
   </head>
 
 <!--  <body id="all" onload="init({{yearA}}, {{yearB}}, {{yearC}}, {{yearOther}}, {{randLoadImgs}}, {{menuLeft}}, {{menuMid}}, {{menuRight}}); $('#sty').hide(); checkUser(); resize(); $('#sty').show(); resize(); slideshow();" onresize="$('#sty').hide(); resize(); $('#sty').show(); resize();">-->
-  <body id="all" onload="init({{videosDict}}, {{yearA}}, {{yearB}}, {{yearC}}, {{yearOther}}, {{randLoadImgs}}, {{menuLeft}}, {{menuMid}}, {{menuRight}});">
+  <body id="all" onload="init({{paintingsList}}, {{videosDict}}, {{yearA}}, {{yearB}}, {{yearC}}, {{yearOther}}, {{randLoadImgs}}, {{menuLeft}}, {{menuMid}}, {{menuRight}});">
     
     <title>Gerri Davis</title>
 
@@ -122,8 +122,23 @@
     </table>
     </div>
 
-    <div id="mobilepage">
-      Hello this is the current mobile site
+    <div id="mobilepage" style="width:100%; height:100%">
+      <table>
+	<td>
+	  <img id="prev" onclick="mobileChangeImg(-1);" src="static/files/Images/Back button.jpg">
+	</td>
+
+	<td width="66%">
+	  <div style="text-align:center;">
+	    <img id="mobileBigImg" src="static/files/Images/ImagesOfPaintings/the Dance.jpg" style="width:100%">
+	    <img id="mobileSmallImg" src="static/files/TextUnderImages/the Dance.jpg" style="width:50%;">
+	  </div>
+	</td>
+
+	<td>
+	  <img id="nxt" onclick="mobileChangeImg(1);" src="static/files/Images/Forward button.jpg">
+	</td>
+      </table>
     </div>
 
   </body>
