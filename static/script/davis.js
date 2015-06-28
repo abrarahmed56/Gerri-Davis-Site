@@ -135,8 +135,7 @@ var myToggle = function(id) {
     api.reinitialise();
 }
 var showMenu = function(menuLeft, menuMid, menuRight) {
-    var newW = document.getElementById("styTwo").width * .9;
-    var s = "<div id='container' style='width:" + newW + "px; text-align:center; background-color:red; font-size:0;'>";
+    var s = "<div id='container' style='text-align:center; background-color:red; font-size:0;'>";
     var left = "<div id='menuLeft' style='width:42%; float:left;'><img id='" + menuLeft[0].replace(/ /g, '') + "' style='width:100%;' src='static/files/Text/" + menuLeft[0] + ".jpg'>";
     var mid = "<div id='menuMid' style='width:24%; float:left;'><img id='" + menuMid[0].replace(/ /g, '') + "' style='width:100%;' src='static/files/Text/" + menuMid[0] + ".jpg'>";
     var right = "<div id='menuRight' style='width:34%; float:left;'><img id='" + menuRight[0].replace(/ /g, '') + "' style='width:100%;' src='static/files/Text/" + menuRight[0] + ".jpg'>";
@@ -156,8 +155,31 @@ var showMenu = function(menuLeft, menuMid, menuRight) {
     //document.getElementById("imgLink").innerHTML=s + "<div style='background-color:blue; width: 0%; height: 0%;'>words<img id='bigImg'></div>";
     document.getElementById("imgLink").innerHTML = s + "<img id='bigImg'>"
     document.getElementById("imgLink").removeAttribute("href");
-    document.getElementById("smallImg").setAttribute("style", "width: 0%; height: 0%");
+    //document.getElementById("smallImg").setAttribute("style", "width: 0%; height: 0%");
+    console.log(document.getElementById("styTwo").clientHeight);
+    setTimeout("generateRandomImage()", 200);
 };
+
+var generateRandomImage = function() {
+    var i = Math.floor(Math.random()*randLoadImgs.length);
+    var image = document.getElementById("bigImg");
+    var wind = document.getElementById("styTwo");
+    var oldH = (wind.clientHeight-document.getElementById("menuLeft").clientHeight)*.85;
+    var oldW = wind.clientWidth*.9;
+    var windowProportion = (oldH / (wind.clientWidth*.9));
+    $("#bigImg").attr("src", "static/files/Images/Gerri Davis Random loading images/" + randLoadImgs[i] + ".jpg").load(function() {
+	var imgProportion = image.naturalHeight/image.naturalWidth;
+	if (imgProportion>windowProportion) {
+	    console.log("oldH: " + oldH);
+	    document.getElementById("bigImg").setAttribute("style", "float:top; height:" + oldH + "px;");
+	}
+	else {
+	    console.log("oldw: " + oldW);
+	    document.getElementById("bigImg").setAttribute("style", "width: " + oldW + "px;");
+	}
+    });
+    document.getElementById("smallImg").setAttribute("src", document.getElementById("bigImg").src.replace("Images/Gerri%20Davis%20Random%20loading%20images", "TextUnderImages"));
+}
 
 var clickMenu = function(menuItem) {
     document.getElementById("imgLink").removeAttribute("href");
@@ -237,15 +259,15 @@ var yearFunction = function(year) {
 	    s = s + "<a href='" + link + "'><img id='" + name.replace(/ /g, '') + "' style='width:100%;' src='static/files/Text/" + name + ".jpg' onmouseover='bold(this.id, this.src);' onmouseout='unbold(this.id, this.src);'></a>"
 	}
     }
-    console.log(s);
+    //console.log(s);
     console.log("yearfunction");
-    $('#container').hide();
+    $("#container").hide();
+    $("#bigImg").hide();
+    $("#smallImg").hide();
     console.log(document.getElementById("imgLink").innerHTML);
-    document.getElementById("imgLink").innerHTML = document.getElementById("imgLink").innerHTML + s + "<img id='Backbutton' src='static/files/Text/Back button.jpg' onmouseover='bold(this.id, this.src);' onmouseout='unbold(this.id, this.src);' onclick='$(&#34;#container&#34;).show(); console.log(&#34;back clicked&#34;);' width='20%'></div>";
-    for (var i = 0 ; i < 10 ; i++ ) {
-	console.log('break');
-    }
-    console.log(document.getElementById("imgLink").innerHTML);
+    //document.getElementById("imgLink").innerHTML = document.getElementById("imgLink").innerHTML + s + "<img id='Backbutton' src='static/files/Text/Back button.jpg' onmouseover='bold(this.id, this.src);' onmouseout='unbold(this.id, this.src);' onclick='$(&#34;#container&#34;).show(); console.log(&#34;back clicked&#34;);' width='20%'></div>";
+    document.getElementById("imgLink").innerHTML = s + "<img id='Backbutton' src='static/files/Text/Back button.jpg' onmouseover='bold(this.id, this.src);' onmouseout='unbold(this.id, this.src);' onclick='$(&#34;#container&#34;).show(); console.log(&#34;back clicked&#34;);' width='20%'></div>";
+    //console.log(document.getElementById("imgLink").innerHTML);
 };
 
 var changeImg = function(src) {
