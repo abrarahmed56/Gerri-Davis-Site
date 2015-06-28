@@ -14,7 +14,7 @@ var menuRight;
 var slideshowOn;
 var slideshowNum;
 var slideshowTimer;
-var init = function(yearA, yearB, yearC, yearOther, randLoadImgs) {
+var init = function(videosDict, yearA, yearB, yearC, yearOther, randLoadImgs) {
     this.yearA = yearA;
     this.yearB = yearB;
     this.yearC = yearC;
@@ -34,7 +34,19 @@ var init = function(yearA, yearB, yearC, yearOther, randLoadImgs) {
     };
     $(".title").on("mouseover", endSlideshow);
     document.getElementById("GerriDavis").addEventListener("mouseover", endSlideshow);
+    addVideos(videosDict);
 };
+
+var addVideos = function(videosDict) {
+    console.log("addvideos");
+    console.log(videosDict);
+    for (video in videosDict) {
+	document.getElementById(video.replace(/ /g, '')).addEventListener("mouseover", function() {
+	    document.getElementById("imgLink").setAttribute("href", videosDict[video]);
+	});
+    }
+};
+
 var endSlideshow = function(e) {
     //console.log("mouseover");
     slideshowOn = false;
