@@ -46,6 +46,7 @@ var init = function(videosDict, yearA, yearB, yearC, yearOther, randLoadImgs) {
     var scrollWidth = $(".jspVerticalBar").width() + 5;
     document.getElementById("whitespace").setAttribute("style", "height:45px; width:33%; position:fixed; bottom:0px; left:" + scrollWidth + "px; z-index:1")
     document.getElementById("downArrow").setAttribute("style", "height:40px; position:fixed; bottom:5px; left:" + scrollWidth + "px; z-index:3")
+    $("#loading").hide();
 };
 
 var addVideos = function(videosDict) {
