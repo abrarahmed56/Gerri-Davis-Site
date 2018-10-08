@@ -1,0 +1,95 @@
+@font-face {
+    font-family: my-handwriting;
+    src: url('GerriDavisVector.otf');
+    src: url('GerriDavisGraphite.otf');
+}
+@font-face {
+    font-family: my-handwriting-bold;
+    src: url('GerriDavisGraphite-Bold.otf');
+}
+html, body, .match-parent-dimensions {
+    height: 98%;
+}
+.make-max-height {
+    max-height: 100%;
+}
+body {
+    overflow-x: hidden;
+}
+.jspVerticalBar
+{
+    left: 0;
+}
+.scroll-pane
+{
+    overflow: auto;
+}
+.painting-list-group-item, .painting-list-group-item-detail {
+    position: relative;
+    display: block;
+    padding: .75rem 1.25rem;
+    margin-bottom: -1px;
+}
+.painting-list-group-item, .painting-list-group-item-detail, .header
+{
+    cursor: pointer;
+}
+.painting-list-group-item-detail {
+    padding-left: 45px;
+}
+a, a:hover {
+    color: #000000;
+    text-decoration: none;
+}
+.menu-item-wrapper {
+    cursor: pointer;
+}
+.menu-item:hover, .menu-subitem:hover {
+    font-family: my-handwriting-bold;
+}
+.menu-subitem {
+    padding-left: 20px;
+}
+p {
+    font-family: my-handwriting;
+    font-size: 25px;
+}
+.menu-item, .menu-subitem {
+    font-size: 20px;
+}
+.bold-writing {
+    font-family: my-handwriting-bold;
+}
+.paintings-container {
+    --n: 1;
+    display: flex;
+    align-items: flex-start;
+    width: 100%;
+    width: calc(var(--n)*100%);
+    transform: translate(calc(var(--i, 0)/var(--n)*-100%));
+    max-height: 100%;
+}
+.paintings-subcontainer {
+    width: calc(100%/var(--n));
+}
+.random-container {
+    max-height: 50%;
+}
+.painting {
+    max-height: 80vh;
+    max-width: 100%;
+}
+.random-image {
+    max-height: 40vh;
+    max-width: 100%;
+}
+.paintings-list {
+    z-index: 1;
+    background-color: #FFFFFF;
+}
+li {
+    border-top: 0 none;
+}
+.header {
+    height: 60px;
+}
