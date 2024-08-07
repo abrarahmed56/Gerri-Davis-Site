@@ -1,6 +1,3 @@
-# Static files
-static/files/
-
 # FCGI files
 *~
 *.fcgi
