@@ -1,3 +1,0 @@
-column1.txt
-column2.txt
-column3.txt
