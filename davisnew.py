@@ -5,7 +5,7 @@ app = Flask(__name__)
 
 @app.route("/")
 def index():
-    f = open("static/files/names.txt", "r")
+    f = open("/static/files/names.txt", "r")
     line = f.readline()
     paintingsList = []
     paintingsDict = {}
