@@ -11,10 +11,10 @@ When We Kiss study- Trevor
 When We Kiss
 -Exhibition View 1 the Last Brucennial
 -Exhibition View 2 the Last Brucennial
-Monitors
--Monitors Jorge
--Monitors Trevor
--Monitors Barbara
+the Monitors
+-the Monitors Jorge
+-the Monitors Trevor
+-the Monitors Barbara
 Selves Film
 -Still 1
 -Still 2
@@ -27,11 +27,6 @@ Selves Film
 -Still 9
 -Still 10
 -V1d3O:http://vimeo.com/user10647393/excerpt-from-selves-film
-the Dance
--Study 1 Ropeswing
--Study 2 Ropeswing
--Exhibition View Gowanus Ballroom
--Exhibition View Bridge Gallery NYC
 the Bather
 -Detail
 Night Window
@@ -44,9 +39,11 @@ Far Window
 Bordel
 -Exhibition view Art Space New Haven
 -billboard art project san bernardino freeway
-the Annunciation
--Detail 1
--Detail 2
+the Dance
+-Study 1 Ropeswing
+-Study 2 Ropeswing
+-Exhibition View Gowanus Ballroom
+-Exhibition View Bridge Gallery NYC
 <
 2013 Gawker credit Victor Jeffreys II
 2013 portrait credit Andre Gauthier
